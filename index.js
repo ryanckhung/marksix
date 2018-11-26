@@ -66,24 +66,19 @@ class Marksix{
             console.log("wrong input format");
             return null;
         }
+
         let pickNumber = [];
         for (var i=0; i<section.length; i++){
             let min = i * 10 + 1;
-            let max = i * 10 + 10;
-            if (max > this.totalNumber){
-                max = this.totalNumber;
-            }
+            let max = (i * 10 + 10) > this.totalNumber ? this.totalNumber: (i*10+10);
             let randomNumber = Marksix.randomPick(min, max, section[i], []);
             pickNumber = [].concat(pickNumber, randomNumber)
         }
 
         if (pickNumber.length<6){
-            var completeList = Marksix.randomPick(1, this.totalNumber, 6-pickNumber.length, pickNumber)
-            this.numbers = completeList
-        }
-        if (pickNumber.length>6){
-            var list = Marksix.randomPickSixElementFromAList(pickNumber)
-            this.numbers = list;
+            this.numbers = Marksix.randomPick(1, this.totalNumber, 6-pickNumber.length, pickNumber)
+        }else if (pickNumber.length>6){
+            this.numbers = Marksix.randomPickSixElementFromAList(pickNumber);
         }
 
         this.numbers = pickNumber;

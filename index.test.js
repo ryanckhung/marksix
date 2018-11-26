@@ -41,7 +41,7 @@ describe('Marksix', ()=>{
         it('test', ()=>{
             expect(true).toEqual(true)
         })
-        for (var i=0; i<1000; i++){
+        for (var i=0; i<3; i++){
             it('Randomly select 6 numbers', ()=>{
                 expect(marksix.numbers.length).toEqual(6);
             })
@@ -58,7 +58,8 @@ describe('Marksix', ()=>{
 
     describe('loop test for randomPickWithRange', ()=>{
         beforeEach(()=>{
-            marksix.randomPickWithRange([1,1,1,1,1]);
+            //marksix.randomPickWithRange([1,1,1,1,1]);
+            marksix.randomPickWithRange([0,0,0,0,5]);
             console.log(marksix.toString());
         })
         it('test', ()=>{
