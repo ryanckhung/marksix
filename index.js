@@ -31,13 +31,9 @@ class Marksix{
         let counter = 0;
         while (counter < darwHowManyTime){
             let randomNumber = Marksix.getRandomArbitrary(min, max);
-            let isExist = excludeList.find(
-                (item) => {
-                    return item == randomNumber
-                }
-            )
+            let isExist = excludeList.find((item) => {return item == randomNumber})
             if (isExist == undefined){
-                counter = counter + 1;
+                counter++;
                 excludeList.push(randomNumber)
             }
         }
@@ -45,16 +41,10 @@ class Marksix{
     }
 
     static randomPickSixElementFromAList(list){
-        if (list.length<=6){
-            console.log("Err: list smaller or equal to 6");
-            return null;
-        }
-
         while(list.length>6){
             let index = Math.floor( Math.random() * list.length );
             list.splice( index, 1 );
         }
-
         return list
     }
 
