@@ -57,17 +57,20 @@ class Marksix{
     }
 
 
+    // Algorithm #1
     // randomly select 6 number between 1 ~ this.totalNumber
     normalDraw(){
         this.numbers = Marksix.randomPick(1, this.totalNumber, 6, [])[0];
     }
 
 
+    // Algorithm #2
     // input [1,2,1,4,2] means:
     // 1-10 select 1 number; 11-20 select 2 number; 21-30 select 1 number
     // 31-40 select 4 number; 41-50 select 2 number; 
     // number of sections depends on this.totalNumber
-    // the final picked value will be randomly pick and compress to 6 num only
+    // if sum of the [1,2,1,4,2] > 6; compress to array of 6
+    // if sum of the [0,0,0,1,2] < 6; will fill up to 6
     randomPickWithRange(section){
         let numOfSection = Math.ceil(this.totalNumber/10);
         if (section.length != numOfSection){
@@ -92,6 +95,7 @@ class Marksix{
         this.numbers = pickNumber;
     }
 
+    // Algorithm #3
     randomPickWithExclusion(excludeList){
         if (excludeList.length > this.totalNumber-6){
             console.log("the excluded list is too long");
