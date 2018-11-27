@@ -65,7 +65,7 @@ describe('Marksix', ()=>{
         it('test', ()=>{
             expect(true).toEqual(true)
         })
-        for (var i=0; i<1000; i++){
+        for (var i=0; i<2; i++){
             it('Randomly select 6 numbers', ()=>{
                 expect(marksix.numbers.length).toEqual(6);
             })
@@ -76,6 +76,27 @@ describe('Marksix', ()=>{
             it('check if exist the lower range', ()=>{
                 let minValue = Math.min(...marksix.numbers);
                 expect(minValue).toBeGreaterThan(0)
+            })
+        }
+    })
+
+    describe('Test excludeList function', ()=>{
+        it('exclude lists', ()=>{
+            expect(Marksix.excludeList([1,2,3,4,5],[2,3,4,6])).toEqual([1,5])
+        })
+    })
+
+    describe('Test exclude the marksix number', ()=>{
+        beforeEach(()=>{
+            marksix.randomPickWithExclusion([1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49]);
+            console.log(marksix.toString());
+        })
+        for (var i=0; i<10000; i++){
+            it('marksix with exclusion list', ()=>{
+                var sumList = marksix.numbers;
+                const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                let sum = sumList.reduce(reducer)
+                expect(sum%2).toEqual(0);
             })
         }
     })
