@@ -15,6 +15,6 @@ marksix.randomPickWithRange([1,2,2,0,1])
 console.log(marksix.toString());
 
 for (var i=0; i<10000; i++){
-    marksix.randomPickWithExclusion([3,8,13,25,30,34]);
+    marksix.randomPickWithExclusion([3,8,13,25,30]);
     console.log(marksix.toString());
 }
